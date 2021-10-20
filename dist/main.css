@@ -709,7 +709,7 @@ nav .nav-list .nav-icons .nav-icon-img {
 }
 
 main .title {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   padding: 1rem 0;
 }
@@ -785,7 +785,8 @@ main .title {
 .form-panel .form-title {
   display: block;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 12px;
+  margin-bottom: 0.5rem;
   color: #808080;
 }
 .form-panel input,
@@ -793,9 +794,15 @@ main .title {
   width: 100%;
   border: 1px solid #4A4A4A;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 400;
   padding: 0.8rem 1rem;
+}
+.form-panel input[type=radio],
+.form-panel select[type=radio] {
+  -webkit-appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .form-panel select {
   -webkit-appearance: none;
@@ -830,6 +837,76 @@ main .title {
 }
 .part .part-content__destionation .form-row__address {
   grid-area: address;
+}
+.part .part-content__shipping .shipping-selection {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  border: 1px solid #F0F0F5;
+  border-radius: 4px;
+  padding: 1.2rem;
+  position: relative;
+  font-weight: 400;
+}
+.part .part-content__shipping .shipping-selection__input {
+  padding: unset;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #2A2A2A;
+}
+.part .part-content__shipping .shipping-selection__method {
+  position: absolute;
+  top: 0.8rem;
+  left: 75px;
+  font-size: 14px;
+}
+.part .part-content__shipping .shipping-selection__method::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.part .part-content__shipping .shipping-selection__method__original::after {
+  content: "約3~7個工作天";
+}
+.part .part-content__shipping .shipping-selection__method__express::after {
+  content: "48小時內送達";
+}
+.part .part-content__shipping .shipping-selection__price {
+  position: absolute;
+  top: 0.8rem;
+  right: 2rem;
+  font-size: 12px;
+}
+.part .part-content__shipping .shipping-selection.checked {
+  border: 1px solid #2A2A2A;
+}
+.part .part-content__shipping .shipping-selection.checked .shipping-selection__input {
+  box-shadow: inset 0 0 0 5px #2A2A2A;
+}
+.part .part-content__shipping .shipping-selection__original {
+  margin-bottom: 1.5rem;
+}
+.part .part-content__payment {
+  display: grid;
+  grid-template-columns: repeat 2, 1fr;
+  grid-template-rows: repeat 3, 1fr;
+  grid-gap: 1.5rem;
+  grid-template-areas: "cardholder cardholder" "cardNumber cardNumber" "expiration code";
+}
+.part .part-content__payment .form-row__cardholder {
+  grid-area: cardholder;
+}
+.part .part-content__payment .form-row__cardNumber {
+  grid-area: cardNumber;
+}
+.part .part-content__payment .form-row__expiration {
+  grid-area: expiration;
+}
+.part .part-content__payment .form-row__code {
+  grid-area: code;
 }
 
 /*# sourceMappingURL=main.css.map */

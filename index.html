@@ -114,34 +114,36 @@
                         <div class="part">
                             <div class="part-title title">運送方式</div>
                             <div class="part-content__shipping">
-                                <div class="shipping-selection__original">
-                                    <input type="radio">
-                                    <div class="shipping__method">標準運送</div>
-                                    <div class="shipping__price">免費</div>
+                                <div class="shipping-selection shipping-selection__original checked">
+                                    <input class="shipping-selection__input" type="radio">
+                                    <div class="shipping-selection__method shipping-selection__method__original">
+                                        標準運送
+                                    </div>
+                                    <div class="shipping-selection__price">免費</div>
                                 </div>
-                                <div class="shipping-selection__express">
-                                    <input type="radio">
-                                    <div class="shipping__method">DHL貨運</div>
-                                    <div class="shipping__price">$500</div>
+                                <div class="shipping-selection shipping-selection__express">
+                                    <input class="shipping-selection__input" type="radio">
+                                    <div class="shipping-selection__method shipping-selection__method__express"><strong>DHL貨運</strong></div>
+                                    <div class="shipping-selection__price">$500</div>
                                 </div>
                             </div>
                         </div>
                         <div class="part">
                             <div class="part-title title">付款資訊</div>
                             <div class="part-content__payment">
-                                <div class="form-row">
+                                <div class="form-row form-row__cardholder">
                                     <label class="form-title" for="cardholder">持卡人姓名</label>
                                     <input type="text" id="cardholder" placeholder="John Doe">
                                 </div>
-                                <div class="form-row">
-                                    <label class="form-title" for="cardnumber">卡號</label>
-                                    <input type="tel" id="cardnumber" maxlength="16" placeholder="1111 2222 3333 4444">
+                                <div class="form-row form-row__cardNumber">
+                                    <label class="form-title" for="cardNumber">卡號</label>
+                                    <input type="tel" id="cardNumber" maxlength="16" placeholder="1111 2222 3333 4444">
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__expiration">
                                     <label class="form-title" for="expiration">有效期限</label>
                                     <input type="text" id="expiration" placeholder="MM/YY">
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__code">
                                     <label class="form-title" for="code">CVC/CCV</label>
                                     <input type="text" id="code" placeholder="123">
                                 </div>

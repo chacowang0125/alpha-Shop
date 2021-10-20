@@ -74,7 +74,7 @@ $form-title: #808080;
 $form-border: #4A4A4A;
 $form-input:#808080;
 $form-divider:#E6E6EB;
-$cart-divider: #F0F0F5; //cart,circle
+$border-default: #F0F0F5; //cart,circle
 $btn-color:#F67599;
 $sizes: ( 25: 25%, 50: 50%, 75: 75%, 100: 100%);
 @mixin getStepNums($num) {
@@ -215,7 +215,7 @@ nav {
 
 main {
     .title {
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: 700;
         padding: 1rem 0;
     }
@@ -289,7 +289,8 @@ main {
     .form-title {
         display: block;
         font-weight: 700;
-        font-size: 0.8rem;
+        font-size: 12px;
+        margin-bottom: 0.5rem;
         color: $form-input;
     }
     input,
@@ -297,9 +298,15 @@ main {
         width: 100%;
         border: 1px solid $form-border;
         border-radius: 4px;
-        font-size: 0.8rem;
+        font-size: 12px;
         font-weight: 400;
         padding: 0.8rem 1rem;
+        &[type="radio"] {
+            //取消預設
+            -webkit-appearance: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     }
     select {
         -webkit-appearance: none;
@@ -336,6 +343,80 @@ main {
             }
             &__address {
                 grid-area: address;
+            }
+        }
+    }
+    .part-content__shipping {
+        .shipping-selection {
+            width: 100%;
+            height: 64px;
+            display: flex;
+            border: 1px solid $border-default;
+            border-radius: 4px;
+            padding: 1.2rem;
+            position: relative;
+            font-weight: 400;
+            &__input {
+                padding: unset;
+                width: 20px;
+                height: 20px;
+                border: 1px solid $primary-black;
+            }
+            &__method {
+                position: absolute;
+                top: 0.8rem;
+                left: 75px;
+                font-size: 14px;
+                &::after {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    font-size: 12px;
+                    font-weight: 400;
+                    white-space: nowrap;
+                }
+                &__original::after {
+                    content: "約3~7個工作天";
+                }
+                &__express::after {
+                    content: "48小時內送達";
+                }
+            }
+            &__price {
+                position: absolute;
+                top: 0.8rem;
+                right: 2rem;
+                font-size: 12px;
+            }
+            &.checked {
+                border: 1px solid $primary-black;
+                .shipping-selection__input {
+                    box-shadow: inset 0 0 0 5px $primary-black;
+                }
+            }
+            &__original {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+    .part-content__payment {
+        display: grid;
+        grid-template-columns: repeat (2, 1fr);
+        grid-template-rows: repeat (3, 1fr);
+        grid-gap: 1.5rem;
+        grid-template-areas: "cardholder cardholder" "cardNumber cardNumber" "expiration code";
+        .form-row {
+            &__cardholder {
+                grid-area: cardholder;
+            }
+            &__cardNumber {
+                grid-area: cardNumber;
+            }
+            &__expiration {
+                grid-area: expiration;
+            }
+            &__code {
+                grid-area: code;
             }
         }
     }

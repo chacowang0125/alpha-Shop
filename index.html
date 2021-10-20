@@ -57,7 +57,7 @@
                         <div class="part">
                             <div class="part-title title">寄送地址</div>
                             <div class="part-content__destionation">
-                                <div class="form-row">
+                                <div class="form-row form-row__title">
                                     <label class="form-title" for="title">稱謂</label>
                                     <select name="title" id="title" required>
 																			<option value="mrs">先生</option>
@@ -65,22 +65,22 @@
 																			<option value="miss">小姐</option>
 																		</select>
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__name">
                                     <label class="form-title" for="name">姓名</label>
                                     <input type="text" id="name" placeholder="請輸入姓名">
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__phone">
                                     <label class="form-title" for="phone">電話</label>
                                     <input type="tel" id="phone" placeholder="請輸入電話">
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__email">
                                     <label class="form-title" for="email">Email</label>
                                     <input type="email" id="email" placeholder="請輸入電子郵件">
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__region">
                                     <label class="form-title" for="region">縣市</label>
-                                    <select name="region" id="region">
-																				<option value="" disabled selected>請選擇縣市</option>
+                                    <select name="region" id="region" required>
+																				<option value="" selected disabled>請選擇縣市</option>
 									                      <option value="taipei-city">台北市</option>
 									                      <option value="new-taipei-city">新北市</option>
 									                      <option value="taoyuan-city">桃園市</option>
@@ -105,7 +105,7 @@
 									                      <option value="chiayi-city">嘉義市</option>
 																		</select>
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row form-row__address">
                                     <label class="form-title" for="address">地址</label>
                                     <input type="text" id="address" placeholder="請輸入地址">
                                 </div>

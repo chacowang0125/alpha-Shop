@@ -711,10 +711,10 @@ nav .nav-list .nav-icons .nav-icon-img {
 main .title {
   font-size: 1.5rem;
   font-weight: 700;
+  padding: 1rem 0;
 }
 
 .stepper-panel {
-  margin: 1.5rem 0;
   display: flex;
 }
 .stepper-panel .step {
@@ -780,6 +780,56 @@ main .title {
 }
 .stepper-panel .step.active .circle-container {
   color: #2A2A2A;
+}
+
+.form-panel .form-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #808080;
+}
+.form-panel input,
+.form-panel select {
+  width: 100%;
+  border: 1px solid #4A4A4A;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.8rem 1rem;
+}
+.form-panel select {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.form-panel select:invalid {
+  color: #747474;
+}
+
+.part .part-content__destionation {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: repeat 5, 1fr;
+  grid-gap: 1.5rem;
+  grid-template-areas: "title name" "phone phone" "email email" "region region" "address address";
+}
+.part .part-content__destionation .form-row__title {
+  grid-area: title;
+}
+.part .part-content__destionation .form-row__name {
+  grid-area: name;
+}
+.part .part-content__destionation .form-row__phone {
+  grid-area: phone;
+}
+.part .part-content__destionation .form-row__email {
+  grid-area: email;
+}
+.part .part-content__destionation .form-row__region {
+  grid-area: region;
+}
+.part .part-content__destionation .form-row__address {
+  grid-area: address;
 }
 
 /*# sourceMappingURL=main.css.map */

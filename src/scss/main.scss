@@ -217,11 +217,11 @@ main {
     .title {
         font-size: 1.5rem;
         font-weight: 700;
+        padding: 1rem 0;
     }
 }
 
 .stepper-panel {
-    margin: 1.5rem 0;
     display: flex;
     .step {
         flex: 1;
@@ -280,6 +280,62 @@ main {
         &.active {
             .circle-container {
                 color: $primary-black;
+            }
+        }
+    }
+}
+
+.form-panel {
+    .form-title {
+        display: block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: $form-input;
+    }
+    input,
+    select {
+        width: 100%;
+        border: 1px solid $form-border;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 400;
+        padding: 0.8rem 1rem;
+    }
+    select {
+        -webkit-appearance: none;
+        cursor: pointer;
+        background-color: transparent;
+        &:invalid {
+            color: #747474;
+        }
+    }
+}
+
+.part {
+    .part-content__destionation {
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        grid-template-rows: repeat (5, 1fr);
+        grid-gap: 1.5rem;
+        grid-template-areas: "title name" "phone phone" "email email" "region region" "address address";
+        .form-row {
+            &__title {
+                grid-area: title;
+            }
+            &__name {
+                grid-area: name;
+            }
+            &__phone {
+                grid-area: phone;
+            }
+            &__email {
+                grid-area: email;
+            }
+            &__region {
+                grid-area: region;
+            }
+            &__address {
+                grid-area: address;
             }
         }
     }

@@ -56,7 +56,7 @@ input:invalid {
     box-shadow: none;
 }
 
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     /* make scrollbar transparent */
     width: 0px;
     background: transparent;
@@ -318,6 +318,7 @@ main {
     }
 }
 
+//form part
 .part {
     .part-content__destionation {
         display: grid;
@@ -420,4 +421,93 @@ main {
             }
         }
     }
+}
+
+.cart-container {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 1rem 1rem 0 1rem;
+    border: 1px solid $border-default;
+    border-radius: 0.5rem;
+    .cart-title {
+        display: none;
+    }
+    .cart-delivery,
+    .cart-amount {
+        border-top: 1px solid $border-default;
+        padding: 1rem 0.5rem 1rem 0;
+        @include flex-group(row, space-between, center);
+        &-title {
+            font-weight: 400;
+        }
+        &-price {
+            font-weight: 700;
+        }
+    }
+}
+
+.product-card {
+    height: 100%;
+    @include flex-group(row, space-between, center);
+    margin-bottom: 1rem;
+    &-img img {
+        width: 100px;
+        height: 100px;
+    }
+    &-content {
+        width: 100%;
+        height: 100px; //why?100% error
+        display: flex;
+        @include flex-group(column, space-between, end);
+        .product-quantity {
+            @include flex-group(row, space-between, center);
+            &-circle {
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background-color: $border-default;
+                text-align: center;
+                font-weight: bold;
+            }
+            &-num {
+                margin: 0 1.8rem;
+            }
+        }
+    }
+}
+
+.btn-panel {
+    .btn-wrapper {
+        border-top: 1px solid $form-divider;
+        padding: 1.5rem 0;
+        @include flex-group(row, space-between, center);
+        .btn-previous,
+        .btn-next {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .btn-previous {
+            text-align: start;
+            width: 50%;
+            &::before {
+                content: "\2190";
+                margin-right: 0.6rem;
+            }
+        }
+        .btn-next {
+            flex: 1;
+            height: 4rem;
+            border-radius: 0.5rem;
+            background: $btn-color;
+            color: $background;
+            &::after {
+                content: "\2192";
+                margin-left: 0.6rem;
+            }
+        }
+    }
+}
+
+footer {
+    display: none;
 }

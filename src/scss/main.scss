@@ -136,6 +136,10 @@ $abbrev in (margin: m, padding: p) {
     }
 }
 
+.d-none {
+    display: none;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -147,6 +151,7 @@ body {
     font-family: "Noto Sans TC";
     font-size: 16px;
     font-weight: 400;
+    color: $primary-black;
 }
 
 // mobile
@@ -171,6 +176,8 @@ nav {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        background-color: $background;
+        z-index: 2;
     }
     .hamburger-icon {
         position: absolute;
@@ -199,7 +206,7 @@ nav {
             border-bottom: 1px solid rgba($primary-black, 0.1);
             .nav-link {
                 font-weight: 500;
-                color: #000;
+                color: $primary-black;
             }
         }
         .nav-icons {
@@ -218,6 +225,7 @@ main {
         font-size: 24px;
         font-weight: 700;
         padding: 1rem 0;
+        color: $primary-black;
     }
 }
 
@@ -227,29 +235,33 @@ main {
         flex: 1;
         position: relative;
         @include getStepNums(3);
+        &__one {
+            @include flex-group(row, start, center)
+        }
+        &__two {
+            @include flex-group(row, center, center)
+        }
+        &__three {
+            @include flex-group(row, end, center)
+        }
+        .label-container {
+            display: none;
+        }
         .circle-container {
-            width: 2rem;
-            height: 2rem;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: 1px solid $stepper-default;
             color: $stepper-default;
-            margin: 0 auto;
-            @include flex-group(row, center, center);
-            &__one {
-                position: absolute;
-                left: 0;
-            }
-            &__three {
-                position: absolute;
-                right: 0;
-            }
+            @include flex-group(row, center, center); // 內部數字
         }
         .connect-line {
             display: block;
             height: 2px;
             background-color: $stepper-connect-line;
             position: absolute;
-            top: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
             &__one {
                 left: 50%;
                 right: -10%;
@@ -320,10 +332,10 @@ main {
 
 //form part
 .part {
-    .part-content__destionation {
+    .part-content__destination {
         display: grid;
         grid-template-columns: 40% 1fr;
-        grid-template-rows: repeat (5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
         grid-gap: 1.5rem;
         grid-template-areas: "title name" "phone phone" "email email" "region region" "address address";
         .form-row {
@@ -402,8 +414,8 @@ main {
     }
     .part-content__payment {
         display: grid;
-        grid-template-columns: repeat (2, 1fr);
-        grid-template-rows: repeat (3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         grid-gap: 1.5rem;
         grid-template-areas: "cardholder cardholder" "cardNumber cardNumber" "expiration code";
         .form-row {
@@ -448,8 +460,8 @@ main {
 
 .product-card {
     height: 100%;
-    @include flex-group(row, space-between, center);
     margin-bottom: 1rem;
+    @include flex-group(row, space-between, center);
     &-img img {
         width: 100px;
         height: 100px;
@@ -472,6 +484,9 @@ main {
             &-num {
                 margin: 0 1.8rem;
             }
+        }
+        .product-price {
+            font-weight: 700; //
         }
     }
 }
@@ -496,7 +511,7 @@ main {
         }
         .btn-next {
             flex: 1;
-            height: 4rem;
+            height: 3rem;
             border-radius: 0.5rem;
             background: $btn-color;
             color: $background;
@@ -510,4 +525,141 @@ main {
 
 footer {
     display: none;
+}
+
+@media screen and (min-width: 376px) {
+    .container {
+        width: 80%;
+    }
+    header {
+        height: 60px;
+    }
+    nav {
+        .hamburger-icon {
+            display: none;
+        }
+        .nav-list {
+            all: unset;
+            width: 50%;
+            height: 100%;
+            overflow: hidden; //有沒有個好的效果？
+            @include flex-group(row, start, center);
+            .nav-item {
+                all: unset;
+                margin-right: 2rem;
+                white-space: nowrap;
+            }
+            .nav-icons {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+    main {
+        .main-title {
+            font-size: 32px;
+        }
+        .main-wrapper {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 50% 10% 40%;
+            grid-template-areas: "main-title main-title main-title""stepper-panel . cart-panel" "form-panel . cart-panel" "btn-panel . cart-panel";
+        }
+        .main-title {
+            grid-area: main-title;
+        }
+        .stepper-panel {
+            grid-area: stepper-panel;
+        }
+        .form-panel {
+            grid-area: form-panel;
+        }
+        .cart-panel {
+            grid-area: cart-panel;
+        }
+        .btn-panel {
+            grid-area: btn-panel;
+        }
+    }
+    .stepper-panel {
+        margin: 1.5rem 0;
+        .step {
+            .circle-container {
+                position: static;
+                width: 24px;
+                height: 24px;
+            }
+            .label-container {
+                display: block;
+                margin-left: 0.5rem;
+            }
+            .connect-line {
+                &__one {
+                    left: 70%;
+                }
+                &__two {
+                    right: -30%;
+                }
+            }
+        }
+    }
+    .part {
+        width: 100%;
+        height: 330px;
+        .part-content__destination {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: "title title name name name name" "phone phone phone email  email email" "region region address address address address"
+        }
+        .part-content__shipping {
+            .shipping-selection {
+                width: 80%;
+            }
+        }
+        .part-content__payment {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: "cardholder cardholder cardholder cardholder . ." "cardNumber cardNumber cardNumber cardNumber . ." "expiration expiration expiration code code code";
+        }
+    }
+    .cart-container {
+        margin: 0;
+        padding: 2rem 1.5rem;
+        padding-bottom: 0;
+        .cart-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            color: $primary-black;
+        }
+        .cart-delivery,
+        .cart-amount {
+            padding: 1rem 0.5rem 2rem 0;
+        }
+    }
+    .btn-panel {
+        margin-top: 2rem;
+        .btn-wrapper {
+            .btn-next {
+                flex: unset;
+                width: 174px;
+            }
+        }
+    }
+    .product-card {
+        margin: 2rem 0;
+        position: relative;
+        &-content {
+            margin-left: 1.2rem;
+            @include flex-group(column, start, start);
+            .product-quantity {
+                margin-top: 1rem;
+            }
+            .product-price {
+                position: absolute;
+                top: 0;
+                right: 0.5rem;
+            }
+        }
+    }
 }

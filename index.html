@@ -40,23 +40,26 @@
             <div class="main-wrapper">
                 <div class="main-title title">結帳</div>
                 <div class="stepper-panel">
-                    <div class="step checked">
+                    <div class="step step__one checked">
                         <div class="circle-container circle-container__one"></div>
+                        <div class="label-container">寄送地址</div>
                         <div class="connect-line connect-line__one"></div>
                     </div>
-                    <div class="step active">
+                    <div class="step step__two active">
                         <div class="circle-container circle-container__two"></div>
+                        <div class="label-container">運送方式</div>
                         <div class="connect-line connect-line__two"></div>
                     </div>
-                    <div class="step">
+                    <div class="step step__three">
                         <div class="circle-container circle-container__three"></div>
+                        <div class="label-container">付款資訊</div>
                     </div>
                 </div>
                 <div class="form-panel">
                     <form action="post">
-                        <div class="part">
+                        <div class="part d-none">
                             <div class="part-title title">寄送地址</div>
-                            <div class="part-content__destionation">
+                            <div class="part-content__destination">
                                 <div class="form-row form-row__title">
                                     <label class="form-title" for="title">稱謂</label>
                                     <select name="title" id="title" required>
@@ -111,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="part">
+                        <div class="part d-none">
                             <div class="part-title title">運送方式</div>
                             <div class="part-content__shipping">
                                 <div class="shipping-selection shipping-selection__original checked">

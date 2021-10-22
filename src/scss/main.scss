@@ -246,6 +246,7 @@ main {
         }
         .label-container {
             display: none;
+            color: $stepper-default;
         }
         .circle-container {
             width: 32px;
@@ -278,6 +279,9 @@ main {
             }
             .connect-line {
                 background-color: $primary-black;
+            }
+            .label-container {
+                color: $primary-black;
             }
         }
         &.checked {
@@ -369,6 +373,7 @@ main {
             padding: 1.2rem;
             position: relative;
             font-weight: 400;
+            cursor: pointer;
             &__input {
                 padding: unset;
                 width: 20px;
@@ -480,6 +485,7 @@ main {
                 background-color: $border-default;
                 text-align: center;
                 font-weight: bold;
+                cursor: pointer;
             }
             &-num {
                 margin: 0 1.8rem;
@@ -494,8 +500,8 @@ main {
 .btn-panel {
     .btn-wrapper {
         border-top: 1px solid $form-divider;
-        padding: 1.5rem 0;
-        @include flex-group(row, space-between, center);
+        padding: 3rem 0;
+        position: relative;
         .btn-previous,
         .btn-next {
             font-size: 14px;
@@ -504,9 +510,16 @@ main {
         .btn-previous {
             text-align: start;
             width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
             &::before {
                 content: "\2190";
                 margin-right: 0.6rem;
+            }
+            &:disabled {
+                display: none;
             }
         }
         .btn-next {
@@ -515,6 +528,10 @@ main {
             border-radius: 0.5rem;
             background: $btn-color;
             color: $background;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
             &::after {
                 content: "\2192";
                 margin-left: 0.6rem;

@@ -421,7 +421,8 @@ main {
                 right: 2rem;
                 font-size: 12px;
             }
-            &.checked {
+            &.checked,
+            &:hover {
                 border: 1px solid $primary-black;
                 .shipping-selection__input {
                     box-shadow: inset 0 0 0 5px $primary-black;

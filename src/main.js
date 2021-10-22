@@ -19,10 +19,12 @@ let step = 0
 let productCost = 5298
 let deliveryFee = 0
 
+//event listener
 deliveryControl.addEventListener('click', handleDelivery)
 btnControl.addEventListener('click', handleBtnControl)
 quantityBtns.forEach(btn => btn.addEventListener('click', renderCart))
 
+//select delivery method
 function handleDelivery(e) {
     if (e.target.matches('.shipping-selection__express')) {
         deliveryFee = 500;
@@ -40,6 +42,7 @@ function handleDelivery(e) {
 
 }
 
+//control buttons
 function handleBtnControl(e) {
     e.preventDefault()
     const nowStep = steps[step]
@@ -64,6 +67,7 @@ function handleBtnControl(e) {
     setBtnDisabled()
 }
 
+//set btn attribute and content
 function setBtnDisabled() {
     if (step === 0) {
         prevBtn.setAttribute('disabled', 'disabled')
@@ -77,6 +81,7 @@ function setBtnDisabled() {
     }
 }
 
+//change quantity and cart amount
 function renderCart(e) {
     if (e.target.matches('.product-quantity-circle__add')) {
         let quantity = e.target.previousElementSibling
@@ -94,5 +99,5 @@ function renderCart(e) {
         }
     }
     let cartTotal = productCost + deliveryFee
-    cartTotalAmount.innerText = "$" + cartTotal;
+    cartTotalAmount.innerText = '$' + cartTotal;
 }

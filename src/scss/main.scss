@@ -492,7 +492,7 @@ main {
             }
         }
         .product-price {
-            font-weight: 700; //
+            font-weight: 700;
         }
     }
 }
@@ -501,19 +501,15 @@ main {
     .btn-wrapper {
         border-top: 1px solid $form-divider;
         padding: 3rem 0;
-        position: relative;
+        @include flex-group(row, space-between, center);
         .btn-previous,
         .btn-next {
+            width: 100%;
             font-size: 14px;
             font-weight: 400;
         }
         .btn-previous {
             text-align: start;
-            width: 50%;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
             &::before {
                 content: "\2190";
                 margin-right: 0.6rem;
@@ -523,15 +519,10 @@ main {
             }
         }
         .btn-next {
-            flex: 1;
             height: 3rem;
             border-radius: 0.5rem;
             background: $btn-color;
             color: $background;
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
             &::after {
                 content: "\2192";
                 margin-left: 0.6rem;
@@ -657,9 +648,19 @@ footer {
     .btn-panel {
         margin-top: 2rem;
         .btn-wrapper {
+            position: relative;
+            .btn-previous {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
             .btn-next {
-                flex: unset;
                 width: 174px;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
             }
         }
     }
@@ -710,7 +711,7 @@ footer {
             color: $form-title;
             font-size: 16px;
             font-weight: 400;
-            // margin: 0.25rem 0;
+            line-height: 1.8rem;
         }
         .footer-follow-icon {
             width: 24px;

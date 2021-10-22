@@ -822,12 +822,15 @@ main .title {
     font-size: 14px;
     font-weight: 400; }
   .btn-panel .btn-wrapper .btn-previous {
-    text-align: start; }
-    .btn-panel .btn-wrapper .btn-previous::before {
-      content: "\2190";
-      margin-right: 0.6rem; }
+    text-align: start;
+    cursor: unset; }
     .btn-panel .btn-wrapper .btn-previous:disabled {
       display: none; }
+    .btn-panel .btn-wrapper .btn-previous .btn-previous-text {
+      cursor: pointer; }
+      .btn-panel .btn-wrapper .btn-previous .btn-previous-text::before {
+        content: "\2190";
+        margin-right: 0.6rem; }
   .btn-panel .btn-wrapper .btn-next {
     height: 3rem;
     border-radius: 0.5rem;

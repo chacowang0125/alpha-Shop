@@ -9,7 +9,7 @@ const freeDelivery = deliveryControl.querySelector('.shipping-selection__origina
 const expressDelivery = deliveryControl.querySelector('.shipping-selection__express')
 const deliveryFeeAmount = document.querySelector('.cart-delivery-price')
 const btnControl = document.getElementById('btn-control')
-const prevBtn = btnControl.querySelector('.btn-previous')
+const prevBtn = btnControl.querySelector('.btn-previous-text')
 const nextBtn = btnControl.querySelector('.btn-next')
     //cart
 const quantityBtns = document.querySelectorAll('.product-quantity-circle')
@@ -55,7 +55,7 @@ function handleBtnControl(e) {
         formParts[step + 1].classList.remove('d-none')
         step += 1
 
-    } else if (e.target.matches('.btn-previous')) {
+    } else if (e.target.matches('.btn-previous-text')) {
         const prevStep = steps[step - 1]
         nowStep.classList.remove('active')
         prevStep.classList.remove('checked')
@@ -70,9 +70,9 @@ function handleBtnControl(e) {
 //set btn attribute and content
 function setBtnDisabled() {
     if (step === 0) {
-        prevBtn.setAttribute('disabled', 'disabled')
+        prevBtn.parentElement.setAttribute('disabled', 'disabled')
     } else {
-        prevBtn.removeAttribute('disabled')
+        prevBtn.parentElement.removeAttribute('disabled')
     }
     if (step === 2) {
         nextBtn.innerText = '送出申請'

@@ -526,12 +526,16 @@ main {
         }
         .btn-previous {
             text-align: start;
-            &::before {
-                content: "\2190";
-                margin-right: 0.6rem;
-            }
+            cursor: unset;
             &:disabled {
                 display: none;
+            }
+            .btn-previous-text {
+                cursor: pointer;
+                &::before {
+                    content: "\2190";
+                    margin-right: 0.6rem;
+                }
             }
         }
         .btn-next {

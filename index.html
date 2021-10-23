@@ -12,8 +12,9 @@
     <header>
         <div class="container">
             <nav>
-                <div class="nav-logo" id="nav-logo">
-                    <a href=""><img class="logo-img" src="./public/favicon/Logo.png" alt="logo-img"></a>
+                <a href="#">
+                    <div class="nav-logo" id="nav-logo">
+                </a>
                 </div>
                 <input class="hamburger-input" type="checkbox" id="hamburger">
                 <label class="hamburger-toggle cursor-pointer" for="hamburger">
@@ -27,9 +28,16 @@
                     <li class="nav-item"><a class="nav-link" href="#">客製商品</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">聯絡我們</a></li>
                     <div class="nav-icons">
-                        <a href="#"><img class="nav-icon-img search-icon" src="./public/favicon/search-icon.png" alt="search-icon"></a>
-                        <a href="#"><img class="nav-icon-img cart-icon" src="./public/favicon/cart-icon.png" alt="cart-icon"></a>
-                        <a href="#"><img class="nav-icon-img darkmode-icon" src="./public/favicon/darkmode-icon.png" alt="darkmode-icon"></a>
+                        <a href="#">
+                            <div class="nav-icon nav-icon__search" alt="search-icon"></div>
+                        </a>
+                        <a href="#">
+                            <div class="nav-icon nav-icon__cart" src="./public/favicon/cart-icon.png" alt="cart-icon"></div>
+                        </a>
+                        <label for="dark__mode__toggle">
+														<div class="nav-icon nav-icon__darkmode" src="./public/favicon/darkmode-icon.png" alt="dark-mode-icon"></div>
+												</label>
+                        <input id="dark__mode__toggle" type="checkbox">
                     </div>
                 </ul>
             </nav>
@@ -40,12 +48,12 @@
             <div class="main-wrapper">
                 <div class="main-title title">結帳</div>
                 <div class="stepper-panel">
-                    <div class="step step__one checked">
+                    <div class="step step__one active">
                         <div class="circle-container circle-container__one"></div>
                         <div class="label-container">寄送地址</div>
                         <div class="connect-line connect-line__one"></div>
                     </div>
-                    <div class="step step__two active">
+                    <div class="step step__two ">
                         <div class="circle-container circle-container__two"></div>
                         <div class="label-container">運送方式</div>
                         <div class="connect-line connect-line__two"></div>
@@ -216,8 +224,10 @@
     <footer>
         <div class="container">
             <div class="footer-wrapper">
-                <div class="footer-section logo">
-                    <a href="#"><img class="logo-img" src="./public/favicon/Logo.png" alt="logo-img"></a>
+                <div class="footer-section footer-section__logo">
+                    <a href="#">
+                        <div class="logo-img" alt="logo-img"></div>
+                    </a>
                 </div>
                 <div class="footer-section service">
                     <div class="footer-title">客戶服務</div>

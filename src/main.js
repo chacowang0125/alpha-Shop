@@ -14,6 +14,8 @@ const nextBtn = btnControl.querySelector('.btn-next')
     //cart
 const quantityBtns = document.querySelectorAll('.product-quantity-circle')
 const cartTotalAmount = document.querySelector('.cart-amount-price')
+    //dark mode
+const darkModeToggle = document.querySelector('#dark__mode__toggle')
 
 let step = 0
 let productCost = 5298
@@ -23,6 +25,14 @@ let deliveryFee = 0
 deliveryControl.addEventListener('click', handleDelivery)
 btnControl.addEventListener('click', handleBtnControl)
 quantityBtns.forEach(btn => btn.addEventListener('click', renderCart))
+darkModeToggle.addEventListener("change", darkModeToggleHandler);
+
+//mode switch
+function darkModeToggleHandler(event) {
+    event.target.checked ?
+        document.documentElement.setAttribute("data-theme", "dark") :
+        document.documentElement.setAttribute("data-theme", "light")
+}
 
 //select delivery method
 function handleDelivery(e) {

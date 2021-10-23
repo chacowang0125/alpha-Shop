@@ -63,20 +63,62 @@ input:invalid {
 }
 
 // color
-$background:#FFFFFF;
-$footer-background: #E5E5E5;
-$footer-link: #808080;
-$primary-black:#2A2A2A;
-$stepper-circle: #333333;
-$stepper-default: #AFB1BD;
-$stepper-connect-line: #F0F0F5;
-$form-title: #808080;
-$form-border: #4A4A4A;
-$form-input:#808080;
-$form-divider:#E6E6EB;
-$border-default: #F0F0F5; //cart,circle
-$btn-color:#F67599;
-$sizes: ( 25: 25%, 50: 50%, 75: 75%, 100: 100%);
+:root {
+    --background: #FFFFFF;
+    --footer-background: #E5E5E5;
+    --cart-background: #ffffff;
+    --cart-btn-text: #000000;
+    --footer-link: #808080;
+    --primary-font-color: #2A2A2A;
+    --stepper-circle: #333333;
+    --stepper-default: #AFB1BD;
+    --stepper-connect-line: #e5e5e5;
+    --form-title: #808080;
+    --form-border: #4A4A4A;
+    --form-input: #999999;
+    --form-divider: #E6E6EB;
+    --form-placeholder: #999999;
+    --form-section-circle: #2a2a2a;
+    --form-input--circle--bg: #ffffff;
+    --border-default: #F0F0F5; //cart,circle
+    --btn-color: #F67599;
+    --btn-font: #ffffff;
+    --logo-url: url('../../public/favicon/Logo.png');
+    --search-icon-url: url('../../public/favicon/search-icon.png');
+    --cart-icon-url: url('../../public/favicon/cart-icon.png');
+    --darkmode-icon-url: url('../../public/favicon/darkmode-icon.png');
+}
+
+[data-theme="dark"] {
+    --background: #121212;
+    --footer-background: #333333;
+    --cart-background: #383838;
+    --cart-btn-text: #333333;
+    --footer-link: rgba(255, 255, 255, 0.6);
+    --primary-font-color: #ffffff;
+    --stepper-circle: #333333;
+    --stepper-default: #AFB1BD;
+    --stepper-connect-line: red;
+    --form-title: rgba(255, 255, 255, 0.4);
+    --form-border: #5e5e5e;
+    --form-input: #ffffff;
+    --form-divider: rgba(255, 255, 255, 0.2);
+    --form-placeholder: rgba(255, 255, 255, 0.4);
+    --form-section-circle: #333333;
+    --form-input--circle--bg: #333333;
+    --border-default: #5e5e5e; //cart,circle
+    --btn-color: #F67599;
+    --btn-font: #ffffff;
+    --logo-url: url('../../public/favicon/Logo-darkmode.png');
+    --search-icon-url: url('../../public/favicon/search-darkmode-icon.png');
+    --cart-icon-url: url('../../public/favicon/cart-darkmode-icon.png');
+    --darkmode-icon-url: url('../../public/favicon/light-icon.png');
+}
+
+$sizes: ( 25: 25%,
+50: 50%,
+75: 75%,
+100: 100%);
 @mixin getStepNums($num) {
     @for $i from 1 through $num {
         &:nth-child(#{$i}) .circle-container::after {
@@ -85,17 +127,24 @@ $sizes: ( 25: 25%, 50: 50%, 75: 75%, 100: 100%);
     }
 }
 
-;
-@mixin flex-group($direction, $justify, $align) {
+@mixin flex-group($direction,
+$justify,
+$align) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
 }
 
-;
+@mixin background-image-import($img-url) {
+    background-image: $img-url;
+    background-repeat: no-repeat;
+    background-size: 95%; //為了cart-icon不要被切到
+}
+
 @each $prop,
-$abbrev in (width: w, height: h) {
+$abbrev in (width: w,
+height: h) {
     @each $num,
     $val in $sizes {
         .#{$abbrev}-#{$num} {
@@ -105,9 +154,18 @@ $abbrev in (width: w, height: h) {
 }
 
 $spacer: 1rem;
-$spacers: ( 0: 0, 1: ( $spacer * 0.25), 2: ( $spacer * 0.5), 3: ( $spacer * 0.75), 4: $spacer, 5: ( $spacer * 1.25), 6: ( $spacer * 1.5), 7: ( $spacer * 1.75), 8: ( $spacer * 2));
+$spacers: ( 0: 0,
+1: ( $spacer * 0.25),
+2: ( $spacer * 0.5),
+3: ( $spacer * 0.75),
+4: $spacer,
+5: ( $spacer * 1.25),
+6: ( $spacer * 1.5),
+7: ( $spacer * 1.75),
+8: ( $spacer * 2));
 @each $prop,
-$abbrev in (margin: m, padding: p) {
+$abbrev in (margin: m,
+padding: p) {
     @each $num,
     $val in $spacers {
         .#{$abbrev}-#{$num} {
@@ -147,11 +205,11 @@ $abbrev in (margin: m, padding: p) {
 html,
 body {
     height: 100%;
-    background-color: $background;
+    background-color: var(--background);
     font-family: "Noto Sans TC";
     font-size: 16px;
     font-weight: 400;
-    color: $primary-black;
+    color: var(--primary-font-color);
 }
 
 // mobile
@@ -169,15 +227,14 @@ header {
 nav {
     height: 100%;
     position: relative;
-    .logo-img {
-        display: inline-block;
-        width: 135px;
+    .nav-logo {
+        width: 170px;
+        height: 30px;
+        @include background-image-import(var(--logo-url));
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: $background;
-        z-index: 2;
     }
     .hamburger-icon {
         position: absolute;
@@ -198,23 +255,40 @@ nav {
         position: absolute;
         top: 100%;
         text-align: center;
-        background-color: $background;
+        background-color: var(--background);
         z-index: 1;
         .nav-item {
             width: 100%;
             padding: 1.5rem;
-            border-bottom: 1px solid rgba($primary-black, 0.1);
+            border-bottom: 1px solid rgba(var(--primary-font-color), 0.1);
             .nav-link {
                 font-weight: 500;
-                color: $primary-black;
+                color: var(--primary-font-color);
             }
         }
         .nav-icons {
-            .nav-icon-img {
-                display: inline-block;
-                width: 1.5rem;
-                height: 1.5rem;
-                margin: 1.5rem 1rem;
+            width: 130px;
+            @include flex-group(row,
+            space-between,
+            center);
+            .nav-icon {
+                width: 25px;
+                height: 25px;
+                &__search {
+                    @include background-image-import(var(--search-icon-url))
+                }
+                &__cart {
+                    @include background-image-import(var(--cart-icon-url))
+                }
+                &__darkmode {
+                    @include background-image-import(var(--darkmode-icon-url))
+                }
+            }
+            label {
+                cursor: pointer;
+            }
+            input {
+                display: none;
             }
         }
     }
@@ -225,7 +299,7 @@ main {
         font-size: 24px;
         font-weight: 700;
         padding: 1rem 0;
-        color: $primary-black;
+        color: var(--primary-font-color);
     }
 }
 
@@ -236,30 +310,38 @@ main {
         position: relative;
         @include getStepNums(3);
         &__one {
-            @include flex-group(row, start, center)
+            @include flex-group(row,
+            start,
+            center)
         }
         &__two {
-            @include flex-group(row, center, center)
+            @include flex-group(row,
+            center,
+            center)
         }
         &__three {
-            @include flex-group(row, end, center)
+            @include flex-group(row,
+            end,
+            center)
         }
         .label-container {
             display: none;
-            color: $stepper-default;
+            color: var(--stepper-default);
         }
         .circle-container {
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            border: 1px solid $stepper-default;
-            color: $stepper-default;
-            @include flex-group(row, center, center); // 內部數字
+            border: 1px solid var(--stepper-default);
+            color: var(--stepper-default);
+            @include flex-group(row,
+            center,
+            center); // 內部數字
         }
         .connect-line {
             display: block;
             height: 2px;
-            background-color: $stepper-connect-line;
+            background-color: var(--stepper-default);
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -275,19 +357,19 @@ main {
         &.checked,
         &.active {
             .circle-container {
-                border: 1px solid $stepper-circle;
+                background-color: var(--stepper-circle);
+                border: 1px solid var(--stepper-circle);
             }
             .connect-line {
-                background-color: $primary-black;
+                background-color: var(--primary-font-color);
             }
             .label-container {
-                color: $primary-black;
+                color: var(--primary-font-color);
             }
         }
         &.checked {
             .circle-container {
-                background-color: $stepper-circle;
-                color: $background;
+                color: var(--btn-font);
             }
             .circle-container::after {
                 content: "\2714"
@@ -295,7 +377,7 @@ main {
         }
         &.active {
             .circle-container {
-                color: $primary-black;
+                color: var(--btn-font);
             }
         }
     }
@@ -307,27 +389,31 @@ main {
         font-weight: 700;
         font-size: 12px;
         margin-bottom: 0.5rem;
-        color: $form-input;
+        color: var(--form-title);
     }
     input,
     select {
         width: 100%;
-        border: 1px solid $form-border;
+        border: 1px solid var(--form-border);
         border-radius: 4px;
         font-size: 12px;
         font-weight: 400;
         padding: 0.8rem 1rem;
+        background-color: transparent;
+        color: var(--primary-font-color);
         &[type="radio"] {
             //取消預設
             -webkit-appearance: none;
             border-radius: 50%;
             cursor: pointer;
         }
+        &::placeholder {
+            color: var(--form-placeholder);
+        }
     }
     select {
         -webkit-appearance: none;
         cursor: pointer;
-        background-color: transparent;
         &:invalid {
             color: #747474;
         }
@@ -339,7 +425,7 @@ main {
             content: "";
             border-style: solid;
             border-width: 6px 5px 0 5px;
-            border-color: $primary-black transparent transparent transparent;
+            border-color: var(--primary-font-color) transparent transparent transparent;
             position: absolute;
             top: 50%;
             right: 8px;
@@ -383,7 +469,7 @@ main {
             width: 100%;
             height: 64px;
             display: flex;
-            border: 1px solid $border-default;
+            border: 1px solid var(--border-default);
             border-radius: 4px;
             padding: 1.2rem;
             position: relative;
@@ -393,7 +479,8 @@ main {
                 padding: unset;
                 width: 20px;
                 height: 20px;
-                border: 1px solid $primary-black;
+                border: 1px solid var(--form-section-circle);
+                background-color: var(--form-input--circle--bg)
             }
             &__method {
                 position: absolute;
@@ -423,9 +510,10 @@ main {
             }
             &.checked,
             &:hover {
-                border: 1px solid $primary-black;
+                border: 1px solid var(--primary-font-color);
                 .shipping-selection__input {
-                    box-shadow: inset 0 0 0 5px $primary-black;
+                    box-shadow: inset 0 0 0 5px var(--form-section-circle);
+                    background-color: #fff;
                 }
             }
             &__original {
@@ -460,16 +548,19 @@ main {
     width: 100%;
     margin: 2rem 0;
     padding: 1rem 1rem 0 1rem;
-    border: 1px solid $border-default;
+    border: 1px solid var(--border-default);
     border-radius: 0.5rem;
+    background-color: var(--cart-background);
     .cart-title {
         display: none;
     }
     .cart-delivery,
     .cart-amount {
-        border-top: 1px solid $border-default;
+        border-top: 1px solid var(--border-default);
         padding: 1rem 0.5rem 1rem 0;
-        @include flex-group(row, space-between, center);
+        @include flex-group(row,
+        space-between,
+        center);
         &-title {
             font-weight: 400;
         }
@@ -482,7 +573,9 @@ main {
 .product-card {
     height: 100%;
     margin-bottom: 1rem;
-    @include flex-group(row, space-between, center);
+    @include flex-group(row,
+    space-between,
+    center);
     &-img img {
         width: 100px;
         height: 100px;
@@ -491,14 +584,19 @@ main {
         width: 100%;
         height: 100px; //why?100% error
         display: flex;
-        @include flex-group(column, space-between, end);
+        @include flex-group(column,
+        space-between,
+        end);
         .product-quantity {
-            @include flex-group(row, space-between, center);
+            @include flex-group(row,
+            space-between,
+            center);
             &-circle {
                 width: 26px;
                 height: 26px;
                 border-radius: 50%;
-                background-color: $border-default;
+                color: var(--cart-btn-text);
+                background-color: var(--border-default);
                 text-align: center;
                 font-weight: bold;
                 cursor: pointer;
@@ -515,9 +613,11 @@ main {
 
 .btn-panel {
     .btn-wrapper {
-        border-top: 1px solid $form-divider;
+        border-top: 1px solid var(--form-divider);
         padding: 3rem 0;
-        @include flex-group(row, space-between, center);
+        @include flex-group(row,
+        space-between,
+        center);
         .btn-previous,
         .btn-next {
             width: 100%;
@@ -532,6 +632,7 @@ main {
             }
             .btn-previous-text {
                 cursor: pointer;
+                color: var(--primary-font-color);
                 &::before {
                     content: "\2190";
                     margin-right: 0.6rem;
@@ -541,8 +642,8 @@ main {
         .btn-next {
             height: 3rem;
             border-radius: 0.5rem;
-            background: $btn-color;
-            color: $background;
+            background: var(--btn-color);
+            color: var(--btn-font);
             &::after {
                 content: "\2192";
                 margin-left: 0.6rem;
@@ -571,7 +672,9 @@ footer {
             width: 50%;
             height: 100%;
             overflow: hidden; //有沒有個好的效果？
-            @include flex-group(row, start, center);
+            @include flex-group(row,
+            start,
+            center);
             .nav-item {
                 all: unset;
                 margin-right: 2rem;
@@ -658,7 +761,7 @@ footer {
             display: block;
             font-weight: 700;
             font-size: 18px;
-            color: $primary-black;
+            color: var(--primary-font-color);
         }
         .cart-delivery,
         .cart-amount {
@@ -689,7 +792,9 @@ footer {
         position: relative;
         &-content {
             margin-left: 1.2rem;
-            @include flex-group(column, start, start);
+            @include flex-group(column,
+            start,
+            start);
             .product-quantity {
                 margin-top: 1rem;
             }
@@ -705,30 +810,36 @@ footer {
         width: 100%;
         height: 275px;
         padding: 3rem 0;
-        background-color: $footer-background;
+        background-color: var(--footer-background);
         .footer-wrapper {
             height: 100%;
             display: flex;
-            @include flex-group(row, space-between, start)
+            @include flex-group(row,
+            space-between,
+            start);
         }
-        .footer-section {
-            &.logo {
-                height: 100%;
-                @include flex-group(row, center, center);
-                .logo-img {
-                    width: 175px;
-                }
+        .footer-section__logo {
+            width: 175px;
+            height: 100%;
+            position: relative;
+            .logo-img {
+                width: 175px;
+                height: 35px;
+                @include background-image-import(var(--logo-url));
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
         .footer-title {
             font-weight: 700;
             font-size: 24px;
-            color: $primary-black;
+            color: var(--primary-font-color);
             margin: 1rem 0;
         }
         .footer-item,
         .footer-item a {
-            color: $form-title;
+            color: var(--form-title);
             font-size: 16px;
             font-weight: 400;
             line-height: 1.8rem;

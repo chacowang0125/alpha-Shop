@@ -605,10 +605,11 @@ nav {
         font-weight: 500;
         color: var(--primary-font-color); }
     nav .nav-list .nav-icons {
-      width: 130px;
+      width: 100%;
+      padding: 1.5rem;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center; }
       nav .nav-list .nav-icons .nav-icon {
         width: 25px;
@@ -944,6 +945,8 @@ footer {
       margin-right: 2rem;
       white-space: nowrap; }
     nav .nav-list .nav-icons {
+      width: 170px;
+      padding: 0;
       position: absolute;
       right: 0; }
   main .main-title {

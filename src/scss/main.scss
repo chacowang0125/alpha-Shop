@@ -80,7 +80,7 @@ input:invalid {
     --form-placeholder: #999999;
     --form-section-circle: #2a2a2a;
     --form-input--circle--bg: #ffffff;
-    --border-default: #F0F0F5; //cart,circle
+    --border-default: #F0F0F5;
     --btn-color: #F67599;
     --btn-font: #ffffff;
     --logo-url: url('../../public/favicon/Logo.png');
@@ -106,7 +106,7 @@ input:invalid {
     --form-placeholder: rgba(255, 255, 255, 0.4);
     --form-section-circle: #333333;
     --form-input--circle--bg: #333333;
-    --border-default: #5e5e5e; //cart,circle
+    --border-default: #5e5e5e;
     --btn-color: #F67599;
     --btn-font: #ffffff;
     --logo-url: url('../../public/favicon/Logo-darkmode.png');
@@ -267,9 +267,10 @@ nav {
             }
         }
         .nav-icons {
-            width: 130px;
+            width: 100%;
+            padding: 1.5rem;
             @include flex-group(row,
-            space-between,
+            space-around,
             center);
             .nav-icon {
                 width: 25px;
@@ -512,7 +513,7 @@ main {
             &:hover {
                 border: 1px solid var(--primary-font-color);
                 .shipping-selection__input {
-                    box-shadow: inset 0 0 0 5px var(--form-section-circle);
+                    box-shadow: inset 0 0 0 5px var(--form-section-circle); //
                     background-color: #fff;
                 }
             }
@@ -681,6 +682,8 @@ footer {
                 white-space: nowrap;
             }
             .nav-icons {
+                width: 170px;
+                padding: 0;
                 position: absolute;
                 right: 0;
             }

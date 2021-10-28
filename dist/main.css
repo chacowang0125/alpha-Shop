@@ -600,7 +600,7 @@ nav {
     nav .nav-list .nav-item {
       width: 100%;
       padding: 1.5rem;
-      border-bottom: 1px solid rgba(var(--primary-font-color), 0.1); }
+      border-bottom: 1px solid var(--stepper-default); }
       nav .nav-list .nav-item .nav-link {
         font-weight: 500;
         color: var(--primary-font-color); }

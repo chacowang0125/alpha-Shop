@@ -1,0 +1,51 @@
+:root {
+    --background: #FFFFFF;
+    --footer-background: #E5E5E5;
+    --cart-background: #ffffff;
+    --cart-btn-text: #000000;
+    --footer-link: #808080;
+    --primary-font-color: #2A2A2A;
+    --stepper-circle: #333333;
+    --stepper-default: #AFB1BD;
+    --stepper-connect-line: #e5e5e5;
+    --form-title: #808080;
+    --form-border: #4A4A4A;
+    --form-input: #999999;
+    --form-divider: #E6E6EB;
+    --form-placeholder: #999999;
+    --form-section-circle: #2a2a2a;
+    --form-input--circle--bg: #ffffff;
+    --border-default: #F0F0F5;
+    --btn-color: #F67599;
+    --btn-font: #ffffff;
+    --logo-url: url('../../public/favicon/Logo.png');
+    --search-icon-url: url('../../public/favicon/search-icon.png');
+    --cart-icon-url: url('../../public/favicon/cart-icon.png');
+    --darkmode-icon-url: url('../../public/favicon/darkmode-icon.png');
+}
+
+[data-theme="dark"] {
+    --background: #121212;
+    --footer-background: #333333;
+    --cart-background: #383838;
+    --cart-btn-text: #333333;
+    --footer-link: rgba(255, 255, 255, 0.6);
+    --primary-font-color: #ffffff;
+    --stepper-circle: #333333;
+    --stepper-default: #AFB1BD;
+    --stepper-connect-line: red;
+    --form-title: rgba(255, 255, 255, 0.4);
+    --form-border: #5e5e5e;
+    --form-input: #ffffff;
+    --form-divider: rgba(255, 255, 255, 0.2);
+    --form-placeholder: rgba(255, 255, 255, 0.4);
+    --form-section-circle: #333333;
+    --form-input--circle--bg: #333333;
+    --border-default: #5e5e5e;
+    --btn-color: #F67599;
+    --btn-font: #ffffff;
+    --logo-url: url('../../public/favicon/Logo-darkmode.png');
+    --search-icon-url: url('../../public/favicon/search-darkmode-icon.png');
+    --cart-icon-url: url('../../public/favicon/cart-darkmode-icon.png');
+    --darkmode-icon-url: url('../../public/favicon/light-icon.png');
+}

@@ -881,9 +881,12 @@ main .title {
         border-radius: 50%;
         color: var(--cart-btn-text);
         background-color: var(--border-default);
-        text-align: center;
         font-weight: bold;
-        cursor: pointer; }
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; }
       .product-card-content .product-quantity-num {
         margin: 0 1.8rem; }
     .product-card-content .product-price {

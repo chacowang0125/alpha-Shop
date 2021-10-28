@@ -1,0 +1,63 @@
+/* reset css */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+a,
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+.btn,
+button,
+button:focus,
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+    outline: 0px !important;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+button[disabled] {
+    pointer-events: none;
+}
+
+input {
+    padding: 0;
+}
+
+input:required {
+    box-shadow: none;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+ ::-webkit-scrollbar {
+    /* make scrollbar transparent */
+    width: 0px;
+    background: transparent;
+}

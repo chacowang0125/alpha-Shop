@@ -1,199 +1,6 @@
-/* reset css */
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-ul,
-li {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-a,
-a:hover,
-a:focus {
-    text-decoration: none;
-}
-
-.btn,
-button,
-button:focus,
-input:focus,
-textarea:focus,
-select,
-select:focus,
-a:focus {
-    outline: 0px !important;
-}
-
-button {
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-button[disabled] {
-    pointer-events: none;
-}
-
-input {
-    padding: 0;
-}
-
-input:required {
-    box-shadow: none;
-}
-
-input:invalid {
-    box-shadow: none;
-}
-
- ::-webkit-scrollbar {
-    /* make scrollbar transparent */
-    width: 0px;
-    background: transparent;
-}
-
-// color
-:root {
-    --background: #FFFFFF;
-    --footer-background: #E5E5E5;
-    --cart-background: #ffffff;
-    --cart-btn-text: #000000;
-    --footer-link: #808080;
-    --primary-font-color: #2A2A2A;
-    --stepper-circle: #333333;
-    --stepper-default: #AFB1BD;
-    --stepper-connect-line: #e5e5e5;
-    --form-title: #808080;
-    --form-border: #4A4A4A;
-    --form-input: #999999;
-    --form-divider: #E6E6EB;
-    --form-placeholder: #999999;
-    --form-section-circle: #2a2a2a;
-    --form-input--circle--bg: #ffffff;
-    --border-default: #F0F0F5;
-    --btn-color: #F67599;
-    --btn-font: #ffffff;
-    --logo-url: url('../../public/favicon/Logo.png');
-    --search-icon-url: url('../../public/favicon/search-icon.png');
-    --cart-icon-url: url('../../public/favicon/cart-icon.png');
-    --darkmode-icon-url: url('../../public/favicon/darkmode-icon.png');
-}
-
-[data-theme="dark"] {
-    --background: #121212;
-    --footer-background: #333333;
-    --cart-background: #383838;
-    --cart-btn-text: #333333;
-    --footer-link: rgba(255, 255, 255, 0.6);
-    --primary-font-color: #ffffff;
-    --stepper-circle: #333333;
-    --stepper-default: #AFB1BD;
-    --stepper-connect-line: red;
-    --form-title: rgba(255, 255, 255, 0.4);
-    --form-border: #5e5e5e;
-    --form-input: #ffffff;
-    --form-divider: rgba(255, 255, 255, 0.2);
-    --form-placeholder: rgba(255, 255, 255, 0.4);
-    --form-section-circle: #333333;
-    --form-input--circle--bg: #333333;
-    --border-default: #5e5e5e;
-    --btn-color: #F67599;
-    --btn-font: #ffffff;
-    --logo-url: url('../../public/favicon/Logo-darkmode.png');
-    --search-icon-url: url('../../public/favicon/search-darkmode-icon.png');
-    --cart-icon-url: url('../../public/favicon/cart-darkmode-icon.png');
-    --darkmode-icon-url: url('../../public/favicon/light-icon.png');
-}
-
-$sizes: ( 25: 25%,
-50: 50%,
-75: 75%,
-100: 100%);
-@mixin getStepNums($num) {
-    @for $i from 1 through $num {
-        &:nth-child(#{$i}) .circle-container::after {
-            content: "#{$i}"
-        }
-    }
-}
-
-@mixin flex-group($direction,
-$justify,
-$align) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
-}
-
-@mixin background-image-import($img-url) {
-    background-image: $img-url;
-    background-repeat: no-repeat;
-    background-size: 95%; //為了cart-icon不要被切到
-}
-
-@each $prop,
-$abbrev in (width: w,
-height: h) {
-    @each $num,
-    $val in $sizes {
-        .#{$abbrev}-#{$num} {
-            #{$prop}: $val;
-        }
-    }
-}
-
-$spacer: 1rem;
-$spacers: ( 0: 0,
-1: ( $spacer * 0.25),
-2: ( $spacer * 0.5),
-3: ( $spacer * 0.75),
-4: $spacer,
-5: ( $spacer * 1.25),
-6: ( $spacer * 1.5),
-7: ( $spacer * 1.75),
-8: ( $spacer * 2));
-@each $prop,
-$abbrev in (margin: m,
-padding: p) {
-    @each $num,
-    $val in $spacers {
-        .#{$abbrev}-#{$num} {
-            #{$prop}: $val;
-        }
-        .#{$abbrev}t-#{$num} {
-            #{$prop}-top: $val;
-        }
-        .#{$abbrev}r-#{$num} {
-            #{$prop}-right: $val;
-        }
-        .#{$abbrev}b-#{$num} {
-            #{$prop}-bottom: $val;
-        }
-        .#{$abbrev}l-#{$num} {
-            #{$prop}-left: $val;
-        }
-        .#{$abbrev}x-#{$num} {
-            #{$prop}-left: $val;
-            #{$prop}-right: $val;
-        }
-        .#{$abbrev}y-#{$num} {
-            #{$prop}-top: $val;
-            #{$prop}-bottom: $val;
-        }
-    }
-}
-
+@import "reset";
+@import "colorTheme";
+@import "variable";
 .d-none {
     display: none;
 }
@@ -269,9 +76,7 @@ nav {
         .nav-icons {
             width: 100%;
             padding: 1.5rem;
-            @include flex-group(row,
-            space-around,
-            center);
+            @include flex-group(row, space-around, center);
             .nav-icon {
                 width: 25px;
                 height: 25px;
@@ -311,19 +116,13 @@ main {
         position: relative;
         @include getStepNums(3);
         &__one {
-            @include flex-group(row,
-            start,
-            center)
+            @include flex-group(row, start, center)
         }
         &__two {
-            @include flex-group(row,
-            center,
-            center)
+            @include flex-group(row, center, center)
         }
         &__three {
-            @include flex-group(row,
-            end,
-            center)
+            @include flex-group(row, end, center)
         }
         .label-container {
             display: none;
@@ -335,9 +134,7 @@ main {
             border-radius: 50%;
             border: 1px solid var(--stepper-default);
             color: var(--stepper-default);
-            @include flex-group(row,
-            center,
-            center); // 內部數字
+            @include flex-group(row, center, center); // 內部數字
         }
         .connect-line {
             display: block;
@@ -559,9 +356,7 @@ main {
     .cart-amount {
         border-top: 1px solid var(--border-default);
         padding: 1rem 0.5rem 1rem 0;
-        @include flex-group(row,
-        space-between,
-        center);
+        @include flex-group(row, space-between, center);
         &-title {
             font-weight: 400;
         }
@@ -574,9 +369,7 @@ main {
 .product-card {
     height: 100%;
     margin-bottom: 1rem;
-    @include flex-group(row,
-    space-between,
-    center);
+    @include flex-group(row, space-between, center);
     &-img img {
         width: 100px;
         height: 100px;
@@ -585,22 +378,19 @@ main {
         width: 100%;
         height: 100px; //why?100% error
         display: flex;
-        @include flex-group(column,
-        space-between,
-        end);
+        @include flex-group(column, space-between, end);
         .product-quantity {
-            @include flex-group(row,
-            space-between,
-            center);
+            @include flex-group(row, space-between, center);
             &-circle {
                 width: 26px;
                 height: 26px;
                 border-radius: 50%;
                 color: var(--cart-btn-text);
                 background-color: var(--border-default);
-                text-align: center;
+                // text-align: center;
                 font-weight: bold;
                 cursor: pointer;
+                @include flex-group(row, center, center)
             }
             &-num {
                 margin: 0 1.8rem;
@@ -616,9 +406,7 @@ main {
     .btn-wrapper {
         border-top: 1px solid var(--form-divider);
         padding: 3rem 0;
-        @include flex-group(row,
-        space-between,
-        center);
+        @include flex-group(row, space-between, center);
         .btn-previous,
         .btn-next {
             width: 100%;
@@ -673,9 +461,7 @@ footer {
             width: 50%;
             height: 100%;
             overflow: hidden; //有沒有個好的效果？
-            @include flex-group(row,
-            start,
-            center);
+            @include flex-group(row, start, center);
             .nav-item {
                 all: unset;
                 margin-right: 2rem;
@@ -795,9 +581,7 @@ footer {
         position: relative;
         &-content {
             margin-left: 1.2rem;
-            @include flex-group(column,
-            start,
-            start);
+            @include flex-group(column, start, start);
             .product-quantity {
                 margin-top: 1rem;
             }
@@ -817,9 +601,7 @@ footer {
         .footer-wrapper {
             height: 100%;
             display: flex;
-            @include flex-group(row,
-            space-between,
-            start);
+            @include flex-group(row, space-between, start);
         }
         .footer-section__logo {
             width: 175px;

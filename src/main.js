@@ -27,6 +27,9 @@ btnControl.addEventListener('click', handleBtnControl)
 quantityBtns.forEach(btn => btn.addEventListener('click', renderCart))
 darkModeToggle.addEventListener("change", darkModeToggleHandler);
 
+// function that adds comma to numbers (checkout section)
+let numberWithCommas = x => x.toLocaleString();
+
 //mode switch
 function darkModeToggleHandler(event) {
     event.target.checked ?
@@ -97,17 +100,17 @@ function renderCart(e) {
         let quantity = e.target.previousElementSibling
         let price = e.target.parentElement.nextElementSibling.innerText.slice(1)
         quantity.innerHTML = Number(quantity.innerHTML) + 1;
-        productCost += Number(price)
+        productCost += Number(price.replace(/[^0-9\.]+/g, ""))
     } else {
         let quantity = e.target.nextElementSibling
         let price = e.target.parentElement.nextElementSibling.innerText.slice(1)
         if (Number(quantity.innerHTML)) {
             quantity.innerHTML = Number(quantity.innerHTML) - 1;
-            productCost -= Number(price)
+            productCost -= Number(price.replace(/[^0-9\.]+/g, ""))
         } else {
             quantity.innerHTML = 0
         }
     }
     let cartTotal = productCost + deliveryFee
-    cartTotalAmount.innerText = '$' + cartTotal;
+    cartTotalAmount.innerText = '$' + numberWithCommas(cartTotal);
 }

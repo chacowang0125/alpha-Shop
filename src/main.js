@@ -28,7 +28,8 @@ quantityBtns.forEach(btn => btn.addEventListener('click', renderCart))
 darkModeToggle.addEventListener("change", darkModeToggleHandler);
 
 // function that adds comma to numbers (checkout section)
-let numberWithCommas = x => x.toLocaleString();
+// let numberWithCommas = x => x.toLocaleString();
+//string.toLocalString用Intl代替
 
 //mode switch
 function darkModeToggleHandler(event) {
@@ -111,6 +112,7 @@ function renderCart(e) {
             quantity.innerHTML = 0
         }
     }
-    let cartTotal = productCost + deliveryFee
-    cartTotalAmount.innerText = '$' + numberWithCommas(cartTotal);
+
+    let cartTotal = new Intl.NumberFormat('hi-IN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(productCost + deliveryFee)
+    cartTotalAmount.innerText = cartTotal;
 }

@@ -40,6 +40,7 @@ function darkModeToggleHandler(event) {
 
 //select delivery method
 function handleDelivery(e) {
+    console.log(e.target)
     if (e.target.matches('.shipping-selection__express')) {
         deliveryFee = 500;
         deliveryFeeAmount.innerText = '$' + 500
@@ -51,9 +52,8 @@ function handleDelivery(e) {
         freeDelivery.classList.add('checked')
         expressDelivery.classList.remove('checked')
     }
-    let cartTotal = productCost + deliveryFee
-    cartTotalAmount.innerText = '$' + cartTotal;
-
+    let cartTotal = new Intl.NumberFormat('hi-IN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(productCost + deliveryFee)
+    cartTotalAmount.innerText = cartTotal;
 }
 
 //control buttons
